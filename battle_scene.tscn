@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://t8b2xlx5jjbk"]
 
 [ext_resource type="PackedScene" uid="uid://3l4uml86atnn" path="res://player/player.tscn" id="1_fw8re"]
+[ext_resource type="Script" uid="uid://v6cpohqhamjg" path="res://battle_scene.gd" id="1_r5l0u"]
+[ext_resource type="PackedScene" uid="uid://biowc4jqyy8hw" path="res://enemies/shnobby/shnobby.tscn" id="3_5g7vw"]
 
 [node name="BattleScene" type="Node2D" unique_id=2138725209]
+script = ExtResource("1_r5l0u")
 
 [node name="Player" parent="." unique_id=2116657779 instance=ExtResource("1_fw8re")]
+
+[node name="Shnobby" parent="." unique_id=92800724 instance=ExtResource("3_5g7vw")]
+position = Vector2(258, 80)

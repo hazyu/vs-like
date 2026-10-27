@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://biowc4jqyy8hw"]
+
+[ext_resource type="Texture2D" uid="uid://bvws7rd5yuwvt" path="res://art/shnobby.png" id="1_i3i2p"]
+[ext_resource type="Script" uid="uid://d30mqmcdluo0s" path="res://components/follow_player.gd" id="2_bfnvj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfnvj"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqe23"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jcjy"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7sog"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlf4n"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kjen"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2n5m"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vpi7"]
+atlas = ExtResource("1_i3i2p")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sp2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfnvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqe23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jcjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7sog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlf4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kjen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2n5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vpi7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sp2k"]
+radius = 8.0
+
+[node name="Shnobby" type="CharacterBody2D" unique_id=92800724]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1056344945]
+sprite_frames = SubResource("SpriteFrames_3sp2k")
+frame_progress = 0.6894858
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1582880395]
+shape = SubResource("CircleShape2D_3sp2k")
+
+[node name="FollowPlayer" type="Node" parent="." unique_id=1911799102 node_paths=PackedStringArray("sprite")]
+script = ExtResource("2_bfnvj")
+sprite = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://d30mqmcdluo0s"

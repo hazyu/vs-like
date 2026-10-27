@@ -14,6 +14,10 @@ config/name="Vampire Survivors Like"
 run/main_scene="uid://cp268fqi1ogwr"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[autoload]
+
+Globals="*uid://n5s0hsqddaw"
+
 [display]
 
 window/size/viewport_width=1920
