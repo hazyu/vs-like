@@ -11,3 +11,5 @@ script = ExtResource("1_r5l0u")
 
 [node name="Shnobby" parent="." unique_id=92800724 instance=ExtResource("3_5g7vw")]
 position = Vector2(258, 80)
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=1885462499]

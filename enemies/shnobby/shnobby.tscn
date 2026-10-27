@@ -70,7 +70,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3sp2k"]
 radius = 8.0
 
-[node name="Shnobby" type="CharacterBody2D" unique_id=92800724]
+[node name="Shnobby" type="CharacterBody2D" unique_id=92800724 groups=["enemy"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1056344945]
 sprite_frames = SubResource("SpriteFrames_3sp2k")

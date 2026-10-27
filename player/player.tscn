@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0rw8ddbi5sq2" path="res://art/char.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://d3fm0d2bvbe51" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://bvc5djqrpvm2a" path="res://objects/bullet/bullet.tscn" id="2_g1dw6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -71,8 +72,12 @@ animations = [{
 radius = 7.0
 height = 22.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_heym1"]
+radius = 300.0
+
 [node name="Player" type="CharacterBody2D" unique_id=2116657779]
 script = ExtResource("1_rkbax")
+bullet_scene = ExtResource("2_g1dw6")
 speed = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1386386224]
@@ -86,3 +91,15 @@ shape = SubResource("CapsuleShape2D_miplp")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1983872658]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="EnemyArea" type="Area2D" parent="." unique_id=1551860380]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea" unique_id=1563739628]
+shape = SubResource("CircleShape2D_heym1")
+
+[node name="Timer" type="Timer" parent="." unique_id=1851708643]
+autostart = true
+
+[connection signal="body_entered" from="EnemyArea" to="." method="_on_enemy_area_body_entered"]
+[connection signal="body_exited" from="EnemyArea" to="." method="_on_enemy_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
