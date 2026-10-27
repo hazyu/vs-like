@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://biowc4jqyy8hw"]
 
 [ext_resource type="Texture2D" uid="uid://bvws7rd5yuwvt" path="res://art/shnobby.png" id="1_i3i2p"]
+[ext_resource type="Script" uid="uid://bry0gm5jjpfxv" path="res://enemies/shnobby/shnobby.gd" id="1_sqe23"]
 [ext_resource type="Script" uid="uid://d30mqmcdluo0s" path="res://components/follow_player.gd" id="2_bfnvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfnvj"]
@@ -70,7 +71,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3sp2k"]
 radius = 8.0
 
-[node name="Shnobby" type="CharacterBody2D" unique_id=92800724 groups=["enemy"]]
+[node name="Shnobby" type="CharacterBody2D" unique_id=92800724]
+script = ExtResource("1_sqe23")
+health = 100
+movespeed = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1056344945]
 sprite_frames = SubResource("SpriteFrames_3sp2k")

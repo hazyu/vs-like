@@ -1,4 +1,5 @@
 extends Node
 
-var player: CharacterBody2D = null
+var battle_scene: Node2D = null
+var player: Player = null
 var projectiles: Node2D = null

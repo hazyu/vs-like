@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var bullet_scene: PackedScene
 @export var speed: float = 200
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_enemy_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body is Enemy:
 		var diff = position.distance_to(body.global_position)
 		if diff < enemy_diff:
 			enemy_diff = diff

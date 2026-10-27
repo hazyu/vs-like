@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqo16gd4xmsxh" path="res://objects/bullet/bullet.gd" id="1_g08x3"]
 [ext_resource type="Texture2D" uid="uid://crxn6lp8d74l5" path="res://art/bullet.png" id="1_ofkrt"]
+[ext_resource type="PackedScene" uid="uid://cjatr0g6nltbq" path="res://objects/hit_marker/hit_marker.tscn" id="2_l2pgv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_heym1"]
 radius = 3.0
@@ -9,6 +10,8 @@ height = 12.0
 
 [node name="Bullet" type="Area2D" unique_id=934541018]
 script = ExtResource("1_g08x3")
+hit_marker_scene = ExtResource("2_l2pgv")
+damage = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534716276]
 rotation = 1.5707964
@@ -20,4 +23,8 @@ position = Vector2(1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_heym1")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=414773682]
+rect = Rect2(-5, -3, 12, 6)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
