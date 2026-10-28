@@ -6,12 +6,20 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var closest_enemy: CharacterBody2D = null
-var enemy_diff: float = 1000000.0
+var mx = 0
+var my = 0
+func _set_camera_zoom():
+	var size = get_window().size
+	var zoom = size.y / 360
+	$Camera2D.zoom = Vector2(zoom, zoom)
+
+func _ready() -> void:
+	_set_camera_zoom()
+	get_tree().root.size_changed.connect(_set_camera_zoom)
 
 func _physics_process(delta: float) -> void:
-	var mx = int(Input.is_action_pressed("mv_right")) - int(Input.is_action_pressed("mv_left"))
-	var my = int(Input.is_action_pressed("mv_down")) - int(Input.is_action_pressed("mv_up"))
+	mx = int(Input.is_action_pressed("mv_right")) - int(Input.is_action_pressed("mv_left"))
+	my = int(Input.is_action_pressed("mv_down")) - int(Input.is_action_pressed("mv_up"))
 	
 	if mx > 0:
 		animated_sprite_2d.flip_h = false
@@ -27,20 +35,16 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(mx, my) * speed
 	move_and_slide()
 
-func _on_enemy_area_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		var diff = position.distance_to(body.global_position)
-		if diff < enemy_diff:
-			enemy_diff = diff
-			closest_enemy = body
-			print(body)
-
-func _on_enemy_area_body_exited(body: Node2D) -> void:
-	if body == closest_enemy:
-		closest_enemy = null
-		enemy_diff = 10000.0
-
 func _on_timer_timeout() -> void:
+	
+	if len(Globals.enemies.get_children()) == 0: return
+	var closest_enemy: Enemy = null
+	var distance = 100000.0
+	for enemy: Enemy in Globals.enemies.get_children():
+		var d = position.distance_to(enemy.global_position)
+		if d < distance:
+			distance = d
+			closest_enemy = enemy
 	if closest_enemy == null: return
 	if Globals.projectiles == null: return
 	

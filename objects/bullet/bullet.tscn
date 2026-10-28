@@ -11,7 +11,7 @@ height = 12.0
 [node name="Bullet" type="Area2D" unique_id=934541018]
 script = ExtResource("1_g08x3")
 hit_marker_scene = ExtResource("2_l2pgv")
-damage = 30
+damage = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534716276]
 rotation = 1.5707964
