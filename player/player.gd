@@ -18,6 +18,7 @@ func _ready() -> void:
 	get_tree().root.size_changed.connect(_set_camera_zoom)
 
 func _physics_process(delta: float) -> void:
+	if Globals.is_game_paused: return
 	mx = int(Input.is_action_pressed("mv_right")) - int(Input.is_action_pressed("mv_left"))
 	my = int(Input.is_action_pressed("mv_down")) - int(Input.is_action_pressed("mv_up"))
 	
@@ -36,8 +37,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_timer_timeout() -> void:
-	
 	if len(Globals.enemies.get_children()) == 0: return
+	if Globals.is_game_paused: return
+	
 	var closest_enemy: Enemy = null
 	var distance = 100000.0
 	for enemy: Enemy in Globals.enemies.get_children():

@@ -1,4 +1,7 @@
 extends Node2D
+class_name BattleScene
+
+@onready var dim_rect: ColorRect = $CanvasLayer/DimRect
 
 func _ready() -> void:
 	Globals.player = $Player

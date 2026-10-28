@@ -11,6 +11,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if parent == null: return
 	if Globals.player == null: return
+	if Globals.is_game_paused: return
 	
 	var direction = parent.global_position.direction_to(Globals.player.global_position)
 

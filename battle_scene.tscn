@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://v6cpohqhamjg" path="res://battle_scene.gd" id="1_r5l0u"]
 [ext_resource type="PackedScene" uid="uid://biowc4jqyy8hw" path="res://enemies/shnobby/shnobby.tscn" id="3_5g7vw"]
 [ext_resource type="Script" uid="uid://b7coh3dgonlfr" path="res://components/enemy_spawner.gd" id="4_5joda"]
+[ext_resource type="Script" uid="uid://brtkgoq6whvih" path="res://components/level_component.gd" id="5_gf131"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5joda"]
+bg_color = Color(0.31015682, 0.6452716, 0.7949556, 1)
 
 [node name="BattleScene" type="Node2D" unique_id=2138725209]
 script = ExtResource("1_r5l0u")
@@ -18,3 +22,22 @@ script = ExtResource("1_r5l0u")
 script = ExtResource("4_5joda")
 enemy_scenes = Array[PackedScene]([ExtResource("3_5g7vw")])
 metadata/_custom_type_script = "uid://b7coh3dgonlfr"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1901169533]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=501407258]
+offset_right = 1280.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_5joda")
+rounded = true
+
+[node name="LevelComponent" type="Node" parent="CanvasLayer/ProgressBar" unique_id=608682839]
+script = ExtResource("5_gf131")
+metadata/_custom_type_script = "uid://brtkgoq6whvih"
+
+[node name="DimRect" type="ColorRect" parent="CanvasLayer" unique_id=985576349]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.29411766)
